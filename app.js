@@ -9,6 +9,7 @@ console.log("Working outside!");
 // Supplies array
 const tools = [
     {name: "teeth", revenue: 1, cost: 0},
+    {name: "rusty scissors", revenue: 5, cost: 5}
 ];
 
 // Progress level info, money earned and tool level
@@ -26,14 +27,32 @@ function cutGrass(){
     workers.money += tool.revenue
 };
 
+function upgrade() {
+    if (workers.tool + 1 < tools.length) {
+        const nextTool = tools[workers.tool + 1]
+        if (nextTool.cost <= workers.money) {
+            workers.money -= nextTool.cost
+            workers.tool += 1
+        } else {
+            alert("Too poor for an upgrade, keep working")
+        }
+    } else {
+        alert("You have the best available tool")
+    }
+}
+
 // A loop that generates a prompt for action by the user to cut the grass again and how much money is in the wallet a.k.a. money
 while(!workers.allTrimmed){
     // The users response being saved into a variable
-    const response = prompt(`You currently have ${workers.money} dollars, do you want to [cut] grass ?`)
+    const response = prompt(`You currently have ${workers.money} dollars, do you want to [cut] grass or [up]grade your equipment ?`)
 
     // Using the cutGrass function if the user responds with 'cut'
     if (response === 'cut'){
         cutGrass()
     }
 
+    // Using the upgrade function if the user responds with 'up'
+    if (response === 'up'){
+        upgrade()
+    }
 }
