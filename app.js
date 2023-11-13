@@ -26,17 +26,24 @@ function cutGrass(){
     // Add a days earning to the workers wallet a.k.a. money
     workers.money += tool.revenue
 };
-
+// This function checks to see if there are more tools to upgrade to.
 function upgrade() {
+    // Checking to see if the current tool is the last tool in the array
     if (workers.tool + 1 < tools.length) {
+        // Checks to see what the next tool is and saves it into a variable
         const nextTool = tools[workers.tool + 1]
+        // Checks to see if there is enough money to but the tool
         if (nextTool.cost <= workers.money) {
+            // Reduces the amount of money the worker has by the cost of the next tool
             workers.money -= nextTool.cost
+            // Allows the worker to get the upgraded tool
             workers.tool += 1
         } else {
+            // A notification that you do not have enough money to but the next tool
             alert("Too poor for an upgrade, keep working")
         }
     } else {
+        // A notification that there is not a better tool to upgrade too.
         alert("You have the best available tool")
     }
 }
