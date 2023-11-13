@@ -10,7 +10,7 @@ console.log("Working outside!");
 const tools = [
     {name: "teeth", revenue: 1, cost: 0},
     {name: "rusty scissors", revenue: 5, cost: 5},
-    {name: "old-timey push lawnmower", revenue: 0, cost: 25}
+    {name: "old-timey push lawnmower", revenue: 50, cost: 25}
 ];
 
 // Progress level info, money earned and tool level
