@@ -12,6 +12,7 @@ const tools = [
     {name: "rusty scissors", revenue: 5, cost: 5},
     {name: "old-timey push lawnmower", revenue: 50, cost: 25},
     {name: "battery-powered lawnmower", revenue: 100, cost: 250},
+    {name: "starving students team", revenue: 0, cost: 500},
 ];
 
 // Progress level info, money earned and tool level
