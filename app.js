@@ -18,7 +18,9 @@ const tools = [
 // Progress level info, money earned and tool level
 const workers = {
     money: 0,
-    tool: 0
+    tool: 0,
+    expense: 0,
+    allTrimmed: false
 };
 
 // Function for completing the job and recognizing revenue earned each day
@@ -43,7 +45,7 @@ function upgrade() {
             workers.tool += 1
         } else {
             // A notification that you do not have enough money to but the next tool
-            alert("Too poor for an upgrade, keep working")
+            alert("You're too poor to get that upgrade, get back to work")
         }
     } else {
         // A notification that there is not a better tool to upgrade too.
@@ -51,10 +53,31 @@ function upgrade() {
     }
 }
 
+// function upgradePrompt(){
+//     if (
+//                     // Update next expense level
+//                     workers.expense += 1
+//     )
+// }
+
+// A function to determine if the max equipment and revenue limit have been met
+function winConditions(){
+    // Comparing what tool the worker has to the max tool available and if they have achived the max amount of money required to complete the game
+    if(workers.tool === tools.length - 1 && workers.money >= 1000){
+        alert("No more grass to cut, you're all done!")
+        workers.allTrimmed = true
+    }
+}
+
+alert("Welcome to Grasslandia, Let's begin!")
+
 // A loop that generates a prompt for action by the user to cut the grass again and how much money is in the wallet a.k.a. money
 while(!workers.allTrimmed){
+    // const nextBestTool = tools[workers.tool + 1]
+    // const nextMajorExpense = tools[workers.expense + 1]
+
     // The users response being saved into a variable
-    const response = prompt(`You currently have ${workers.money} dollars, do you want to [cut] grass or [up]grade your equipment ?`)
+    const response = prompt(`You currently have ${workers.money} dollars, do you want to [cut] grass or [up]grade your equipment?`) //Next upgrade is ${nextBestTool.name} and costs ${nextMajorExpense.cost} dollars.
 
     // Using the cutGrass function if the user responds with 'cut'
     if (response === 'cut'){
@@ -65,4 +88,12 @@ while(!workers.allTrimmed){
     if (response === 'up'){
         upgrade()
     }
+
+    // Notification for entering a response other than 'cut' or 'up'
+    if (response !== 'cut' && response !== 'up'){
+        alert("Input error, please try again")   
+    }
+
+winConditions()
+
 }
